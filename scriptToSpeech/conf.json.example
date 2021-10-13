@@ -1,0 +1,5 @@
+{
+    "generationCharacters": "character-name-here",
+    "script_dir": "/home/user/scripts",
+    "output_dir": "~/speechOutput"
+}

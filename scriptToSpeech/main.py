@@ -3,6 +3,24 @@ import os
 from io import TextIOWrapper
 from typing import NamedTuple
 import glob
+import json
+from datetime import datetime
+
+
+class Conf(NamedTuple):
+    generationCharacters: str
+    script_dir: str
+    output_dir: str
+
+def read_json_conf() -> Conf:
+    f = open('conf.json', "r")
+    data = json.loads(f.read())
+    f.close()
+    return Conf(
+        generationCharacters=data['generationCharacters'],
+        script_dir=data['script_dir'],
+        output_dir=data['output_dir'],
+    )
 
 class Script(NamedTuple):
     description: str
@@ -36,21 +54,22 @@ def GetExistingMP3s(path: str) -> list[str]:
         existing_mp3s.append(os.path.splitext(os.path.basename(filename))[0])
     return existing_mp3s
 
-generationCharacters = ['AI']
-my_path = "./../../scripts"
-output_path = './../../output'
+print("*** SCRIPT TO SPEECH")
 
-print(f'Generating MP3s from script .txt files for characters {generationCharacters}')
+conf = read_json_conf()
 
-scripts = GetScripts(my_path)
-existing_mp3s = GetExistingMP3s(output_path)
+print(f'*** Generating for character "{conf.generationCharacters}"\n')
+scripts = GetScripts(conf.script_dir)
+existing_mp3s = GetExistingMP3s(conf.output_dir)
 for script in scripts:
-    if (script.character in generationCharacters):
+    if (script.character in conf.generationCharacters):
         if (script.description not in existing_mp3s):
-            print(f'* GENERATING for script {script.description}')
+            print(f'{datetime.now().strftime("%H:%M:%S")} GENERATING {script.description}')
             tts = gtts.gTTS(script.dialog)
-            tts.save(f"{output_path}/{script.description}.mp3")
+            tts.save(f"{conf.output_dir}/{script.description}.mp3")
         else:
-            print(f'* SKIPPING for script {script.description}, mp3 already exists')
+            print(f'{datetime.now().strftime("%H:%M:%S")} SKIPPING {script.description}: mp3 already exists')
     else:
-        print(f'* SKIPPING for script {script.description}, character {script.character} not in generation list')
+        print(f'{datetime.now().strftime("%H:%M:%S")} SKIPPING {script.description}: character {script.character} not in generation list')
+
+print(f'{datetime.now().strftime("%H:%M:%S")} FINISHED')

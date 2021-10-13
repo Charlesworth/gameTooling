@@ -14,3 +14,7 @@ Script .txt files should have the following format:
     EOF
 
 MP3s will be generated for any script file with "Character: AI".
+
+## Config
+
+Uses a local json config file, check "conf.json.example".
