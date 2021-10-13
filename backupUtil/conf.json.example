@@ -1,0 +1,6 @@
+{
+    "target_dir": "/path-to-dir-to-be-zipped",
+    "rsync_remote_host": "user@example:/home/user/",
+    "rsync_ssh_key_path": "~/.ssh/ssh-file-here",
+    "rclone_remote": "remote-setup-in-rclone:"
+}

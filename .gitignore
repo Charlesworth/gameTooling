@@ -4,4 +4,4 @@
 Pipfile.lock
 
 .zip
-.json
+*.json
