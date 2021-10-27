@@ -1,0 +1,44 @@
+{
+    "floors": [
+        {
+            "tileX": 0,
+            "tileY": 0,
+            "floorType": "<enum-here>"
+        }
+    ],
+    "walls": [
+        {
+            "tileX": 0,
+            "tileY": 0,
+            "cardinalOrientation": "<N/E/S/W-enum-here>",
+            "wallType": "<Door/Wall/Window-enum-here>"
+        }
+    ],
+    "items": [
+        {
+            "tileX": 0,
+            "tileY": 0,
+            "itemType": "<item-enum-here>",
+            "itemProperties": {}
+        }
+    ],
+    "zones": [
+        {
+            "tileStartX": 0,
+            "tileStartY": 0,
+            "tileEndX": 0,
+            "tileEndY": 0,
+            "zoneType": "<zone-type-enum-here>",
+            "zoneProperties": {}
+        }
+    ],
+    "characters": [
+        {
+            "tileX": 0,
+            "tileY": 0,
+            "cardinalOrientation": "<NESW-or-angle-here???>",
+            "characterType": "<character-type-enum-here>",
+            "characterProperties": {} 
+        }
+    ]
+}
