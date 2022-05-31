@@ -1,0 +1,10 @@
+{
+    "target_dir": "/path-to-dir-to-be-zipped",
+    "bucket_name": "<name of the s3 bucket>",
+    "r2_endpoint_url": "https://<endpoint-here>",
+    "r2_access_key_id": "<public-key-here>",
+    "r2_secret_access_key": "<private-key-here>"
+    "b2_endpoint_url": "https://<endpoint-here>",
+    "b2_access_key_id": "<public-key-here>",
+    "b2_secret_access_key": "<private-key-here>"
+}
